@@ -8,8 +8,14 @@ app.get('/', (req, res) => {
   res.send('Hello world123!');
 });
 
-app.listen(process.env.PORT, () => {
+const port = process.env.PORT || 5000;
+
+if (!process.env.PORT) {
+  throw new Error('PORT is not defined');
+}
+
+app.listen(port, () => {
   const host = 'localhost';
   // eslint-disable-next-line no-console
-  console.log(`Example app listening on port 300! ${host}`);
+  console.log(`Example app listening on port ${port}! ${host}`);
 });
